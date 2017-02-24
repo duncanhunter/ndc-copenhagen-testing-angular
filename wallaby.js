@@ -27,7 +27,11 @@ module.exports = function (wallaby) {
   return {
     files: [
       {pattern: 'src/**/*.ts', load: false},
+      {pattern: 'src/**/*.d.ts', ignore: true},
       {pattern: 'src/**/*.css', load: false},
+      {pattern: 'src/**/*.less', load: false},
+      {pattern: 'src/**/*.scss', load: false},
+      {pattern: 'src/**/*.sass', load: false},
       {pattern: 'src/**/*.html', load: false},
       {pattern: 'src/**/*spec.ts', ignore: true}
     ],
@@ -38,12 +42,12 @@ module.exports = function (wallaby) {
 
     testFramework: 'jasmine',
 
-    env: {
-      kind: 'electron'
-    },
-
     compilers: {
       '**/*.ts': wallaby.compilers.typeScript(compilerOptions)
+    },
+
+    env: {
+      kind: 'electron'
     },
 
     postprocessor: webpackPostprocessor,
